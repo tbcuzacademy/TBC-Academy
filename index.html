@@ -1,4 +1,4 @@
 // Впишите адрес вашей функции (см. инструкцию). Ключ здесь больше не нужен.
 window.CFG = {
-  api: 'https://ВАШ_КОД_ПРОЕКТА.supabase.co/functions/v1/api'
+  api: 'https://rqkqcrgnmniuqcijdetf.supabase.co/functions/v1/api'
 };
