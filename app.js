@@ -29,6 +29,8 @@ const PAIRS=[['Ежемесячно миллионы клиентов польз
 ['Вход в обучение','O‘qishga kirish'],['Номер телефона','Telefon raqami'],['Код доступа (последние 4 цифры номера)','Kirish kodi (raqamning oxirgi 4 ta raqami)'],['Доступ до: ','Kirish muddati: '],['Доступ до','Kirish muddati'],['Срок курса: ','Kurs muddati: '],['Срок курса закончился','Kurs muddati tugadi'],
 ['Не пройден','Topshirilmagan']].sort((a,b)=>b[0].length-a[0].length);
 const EX={'Главная':'Bosh sahifa','Уроки':'Darslar','Тесты':'Testlar','Прогресс':'Natijalar','Рейтинг':'Reyting','Личный кабинет':'Shaxsiy kabinet','Баллы':'Ballar','Выйти':'Chiqish','Продукты TBC':'TBC mahsulotlari','Доступен':'Ochiq','Закрыто':'Yopiq','Пройден':'Topshirilgan','Пройти':'Topshirish','Кандидат':'Nomzod','Обучение':'O‘qish','Отдел':'Bo‘lim','Поток':'Oqim','Вы':'Siz','Войти':'Kirish','Поиск':'Qidiruv','Отправить':'Yuborish','Тест':'Test','Кредитная карта Osmon':'Osmon kredit kartasi','Вклады':'Omonatlar','Кредиты':'Kreditlar','Переводы и платежи':'O‘tkazmalar va to‘lovlar','Экосистема TBC Uzbekistan':'TBC Uzbekistan ekotizimi'};
+Object.assign(EX,{'Ваши уроки':'Sizning darslaringiz','Все уроки':'Barcha darslar','Рейтинг потока':'Oqim reytingi','Мой прогресс':'Mening natijam','Продукты TBC':'TBC mahsulotlari','Место в потоке':'Oqimdagi o‘rin','Итог':'Yakun','Закрыт':'Yopiq','Ваш маршрут':'Sizning yo‘lingiz','Подробнее':'Batafsil','Следующий шаг':'Keyingi qadam','Онлайн-обучение':'Onlayn o‘qish','Сейчас':'Hozir','Доступен':'Ochiq','Тесты':'Testlar'});
+PAIRS.push(['Онлайн-часть перед очным обучением. Пройдите уроки по порядку, после каждого есть тест.','Yuzma-yuz o‘qishdan oldingi onlayn qism. Darslarni tartib bilan o‘ting, har biridan keyin test bor.'],['Рейтинг считается по урокам, тестам и активности','Reyting darslar, testlar va faollik bo‘yicha hisoblanadi'],['вопр.','sav.'],['баллов','ball'],['место','o‘rin'],['Нужно набрать:','Yig‘ish kerak:'],['осталось:','qoldi:'],['Урок ','Dars '],[' из ',' / '],['сданы','topshirilgan']);PAIRS.sort((a,b)=>b[0].length-a[0].length);
 function tr(s){RE.forEach(([r,t])=>{s=s.replace(r,t)});PAIRS.forEach(([a,b])=>{s=s.split(a).join(b)});const k=s.trim();return EX[k]!==undefined?s.replace(k,EX[k]):s}
 const trs=s=>S.lang==='uz'?tr(s):s;
 
@@ -67,6 +69,13 @@ const $ = s => document.querySelector(s);
 .adm .crumb{font-size:12px;margin:0 0 8px}.adm .crumb a{color:#0d8abf;text-decoration:none}
 .tb{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;background:#eef1f5;margin-bottom:22px}.tb h1{font-size:17px;font-weight:500;margin:0;padding:11px 16px}
 .tabs{display:flex;flex-wrap:wrap}.tabs a{padding:13px 16px;color:#0d8abf;text-decoration:none;font-size:13px}.tabs a.on{background:#0d8abf;color:#fff}
+.fs{border:0;margin:0 0 30px;padding:0;min-width:0}.fs legend{padding:0 0 8px;margin-bottom:16px;width:100%;border-bottom:1px solid #d9e0e7;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#6b7785}
+.fg{display:flex;flex-direction:column;gap:6px;margin-bottom:18px;min-width:0}.fg label.f{margin:0}.un{position:relative}.un input{padding-right:64px;-moz-appearance:textfield}.un input::-webkit-inner-spin-button,.un input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}.un i{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-style:normal;font-size:12px;color:#6b7785;pointer-events:none}
+.h2{font-size:12px;color:#6b7785;margin:0;max-width:none;display:block}
+.swrow{display:flex;gap:14px;align-items:flex-start;padding:14px 16px;border:1px solid #d9e0e7;border-radius:4px;background:#f6f8fa;cursor:pointer}.swrow b{display:block;font-weight:600}.swrow .h2{margin-top:2px}
+.sw{appearance:none;-webkit-appearance:none;flex:none;width:40px!important;height:22px;border-radius:11px;background:#cfd6df;position:relative;cursor:pointer;margin:2px 0 0!important;padding:0!important;border:0!important;transition:background .15s}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:transform .15s}.sw:checked{background:#0d8abf}.sw:checked::after{transform:translateX(18px)}
+.note2{margin-top:12px;padding:10px 14px;border-radius:4px;background:#e6f4fa;font-size:12px}
 .form{max-width:760px;margin:0 auto}.form.wide{max-width:1000px}.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0 18px}.req{color:#e8402c}
 .fb{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;background:#f1f2f4;border-top:1px solid #e3e8ee;padding:14px 18px;margin-top:26px}
 .badge{display:inline-block;font-size:11px;font-weight:700;color:#fff;border-radius:3px;padding:2px 8px}.badge.l{background:#0d8abf}.badge.t{background:#3cb371}.badge.m{background:#6c757d}
@@ -102,12 +111,21 @@ async function api(p, o = {}) {
   if (!r.ok) { if (r.status === 401 && S.tok && p !== '/login') { dropSession(); render(); } throw Object.assign(new Error(j.error || j.message || j.msg || j.error_description || ('Сервер вернул ошибку ' + r.status)), { status: r.status }); }
   return j;
 }
-function dropSession() { S.tok = ''; S.me = null; S.st = null; localStorage.removeItem('tok'); }
+function dropSession() { S.tok = ''; S.me = null; S.st = null; localStorage.removeItem('tok'); try { sessionStorage.removeItem('snap'); } catch (e) { } }
+const saveSnap = () => { try { if (isC() && S.st) sessionStorage.setItem('snap', JSON.stringify({ me: S.me, st: S.st })); } catch (e) { } };
+const readSnap = () => { try { return JSON.parse(sessionStorage.getItem('snap') || 'null'); } catch (e) { return null; } };
 const isC = () => S.me && S.me.role === 'candidate';
-async function refresh() { S.st = await api('/state'); }
+async function refresh() { S.st = await api('/state'); saveSnap(); }
 async function boot() {
   document.title = 'TBC Academy';
-  api('/health').catch(() => { });
+  try { const o = new URL((window.CFG || {}).api).origin, l = document.createElement('link'); l.rel = 'preconnect'; l.href = o; l.crossOrigin = ''; document.head.appendChild(l); } catch (e) { }
+  const snap = S.tok ? readSnap() : null;
+  if (snap && snap.me && snap.me.role === 'candidate' && snap.st) {
+    S.me = snap.me; S.st = snap.st; render();
+    try { const n = await api('/state'), strip = o => JSON.stringify({ ...o, now: 0 }), ch = strip(n) !== strip(S.st); S.st = n; if (n.me) S.me = n.me; saveSnap(); if (ch && !S.m && ['main', 'lessons', 'tests', 'progress', 'rating', 'profile'].includes(S.scr)) render(); } catch (e) { if (e.status === 401 || e.status === 403) { dropSession(); render(); } }
+    return;
+  }
+  if (!S.tok) api('/health').catch(() => { });
   if (S.tok) { try { S.me = (await api('/me')).user; if (isC()) await refresh(); else { S.scr = 'a_stats'; await adLoad('a_stats'); } } catch (e) { dropSession(); } }
   render();
 }
@@ -127,7 +145,7 @@ async function go(scr, p = {}) {
   if (isC() && ['main', 'lessons', 'tests', 'progress', 'rating', 'profile', 'block', 'lesson'].includes(scr)) quietRefresh(scr);
 }
 async function quietRefresh(scr) {
-  try { const n = await api('/state'), strip = o => JSON.stringify({ ...o, now: 0 }), changed = strip(n) !== strip(S.st); S.st = n; if (changed && S.scr === scr && scr !== 'lesson' && !S.m) { const y = scrollY; render(); scrollTo(0, y); } } catch (e) { }
+  try { const n = await api('/state'), strip = o => JSON.stringify({ ...o, now: 0 }), changed = strip(n) !== strip(S.st); S.st = n; saveSnap(); if (changed && S.scr === scr && scr !== 'lesson' && !S.m) { const y = scrollY; render(); scrollTo(0, y); } } catch (e) { }
 }
 
 function logout() { api('/logout', { method: 'POST' }).catch(() => { }); dropSession(); S.scr = 'main'; render(); }
@@ -151,12 +169,14 @@ const cvBg = b => b.cover ? `background-image:url('${esc(b.cover)}')` : '';
 const statusPill = b => b.status === 'passed' ? ['dn', 'Пройден'] : b.status === 'locked' ? ['lk', 'Закрыто'] : b.status === 'failed' ? ['no', 'Не пройден'] : ['ok', 'Доступен'];
 
 // ---------- оболочка кандидата ----------
+const inits = () => { const w = String(S.me.name || '').trim().split(/\s+/).filter(Boolean); return w.length ? (w[0][0] + (w[1] ? w[1][0] : '')).toUpperCase() : 'TBC'; };
 function sidebar() {
   const st = S.st, p = st.points, on = { main: 'main', lessons: 'lessons', block: 'lessons', lesson: 'lessons', tests: 'tests', test: 'tests', tres: 'tests', hist: 'tests', progress: 'progress', rating: 'rating', profile: 'profile' }[S.scr];
   const n = [['main', 'Главная'], ['lessons', 'Уроки'], ['tests', 'Тесты'], ['progress', 'Прогресс'], ['rating', 'Рейтинг'], ['profile', 'Личный кабинет']];
   return `<div class="logo"><img src="${LOGO}" alt="TBC" width="34" height="34"><span>TBC<br>Academy</span></div><nav>${n.map(([k, t]) => `<button class="${on === k ? 'on' : ''}" onclick="go('${k}')"><span>${t}</span>${IC[k]}</button>`).join('')}</nav>
-<div class="score"><div>Баллы</div><div class="sc"><b>${p.got}</b> из ${p.max}</div><div class="mu">Нужно набрать: ${p.need}<br>Осталось набрать: ${Math.max(0, p.need - p.got)}</div>${st.rating ? `<div class="mu" style="margin-top:8px">Место в потоке: <b>${st.rating.place}</b> из ${st.rating.n}</div>` : ''}</div>
-<div class="mu" style="margin-top:10px;font-size:12px">Доступ до: ${dateRu(st.enrollment.access_until)}<br>${leftTxt()}</div>
+<div class="me"><div class="av">${esc(inits())}</div><div><b>${esc(S.me.name || S.me.code || 'Кандидат')}</b><span>${p.got} из ${p.max} баллов${st.rating ? ' · ' + st.rating.place + ' место' : ''}</span></div></div>
+<div class="nt">Нужно набрать: <b>${p.need}</b> · осталось: <b>${Math.max(0, p.need - p.got)}</b></div>
+<div class="mu" style="margin-top:8px;font-size:12px">Доступ до: ${dateRu(st.enrollment.access_until)}<br>${leftTxt()}</div>
 <div class="lng"><button class="lg ${S.lang !== 'uz' ? 'on' : ''}" onclick="setLang('ru')">RU</button><button class="lg ${S.lang === 'uz' ? 'on' : ''}" onclick="setLang('uz')">UZ</button></div><button class="lnk side-out" onclick="logout()">Выйти</button>`;
 }
 function shell(v) { return `<div class="shell"><aside class="side">${sidebar()}</aside><main><div class="search"><input type="text" placeholder="Поиск" value="${esc(S.q)}" onkeydown="if(event.key==='Enter'){S.q=this.value;go('lessons')}"></div>${v}</main></div><div class="shield">Окно неактивно. Вернитесь на вкладку, чтобы продолжить.</div>`; }
@@ -172,7 +192,22 @@ function nextAct() {
   return `<button class="tq" onclick="go('lesson',{id:${l.id}})">Начнем учиться</button>`;
 }
 const V = {};
-V.main = () => `<div class="hero ih" ${siteBg('hero')}><h1>Продукты TBC</h1><p>Ежемесячно миллионы клиентов пользуются услугами TBC Bank: совершают платежи и переводы, оформляют кредиты, управляют счетами и вкладами. Но как работают эти продукты? В чем их особенности?</p>${nextAct()}</div><div class="plain">Отдел взыскания — это важное звено в финансовой системе компании. Его основная задача — взаимодействие с клиентами, имеющими просроченную задолженность, и поиск оптимальных решений для ее погашения</div><div class="g3">${PR.slice(0, 3).map(prc).join('')}</div>${note}`;
+V.main = () => {
+  const st = S.st, bs = st.blocks, p = st.points, r = st.rating, e = st.enrollment, fn = String(S.me.name || '').trim().split(/\s+/)[0] || '', done = bs.filter(x => x.status === 'passed').length;
+  const pct = p.need ? Math.min(100, Math.round(p.got / p.need * 100)) : 0, ci = bs.findIndex(x => x.status !== 'passed'), cur = ci < 0 ? null : bs[ci];
+  const left = Math.max(0, Math.ceil((Date.parse(e.access_until) - Date.now()) / 864e5));
+  const step = (x, i) => { const can = x.status !== 'locked', isCur = i === ci, cls = x.status === 'passed' ? 'done' : x.status === 'locked' ? 'lock' : isCur ? 'cur' : '', sc = x.status === 'passed' ? 'ok' : x.status === 'locked' ? 'lk' : x.status === 'failed' ? 'bad' : 'go', lab = x.status === 'passed' ? 'Пройден' + (x.best !== null ? ' · ' + x.best + '%' : '') : x.status === 'locked' ? (x.reason === 'day' ? 'Откроется в день ' + x.day : 'Закрыт') : x.status === 'failed' ? 'Не пройден' : isCur ? 'Сейчас' : 'Доступен';
+    return `<div class="step ${cls} ${can ? 'click' : ''}" ${can ? `onclick="go('block',{id:${x.id}})"` : ''}>${x.cover ? `<div class="im" style="${cvBg(x)}"></div>` : ''}<span class="n">${isFinal(x) ? '★' : String(i + 1).padStart(2, '0')}</span><span class="meta">${isFinal(x) ? 'Итог' : 'Урок'} · ${x.questions_count} вопр.</span><span class="ti">${esc(x.title)}</span><span class="st ${sc}">${lab}</span></div>`; };
+  const top = r ? r.board.slice(0, 5) : [], mx = Math.max(1, ...top.map(x => x.s), r ? r.score : 0);
+  const lb = r ? top.map(x => `<div class="${x.me ? 'me2' : ''}"><em>${x.i}</em><span><i style="width:${Math.round(x.s / mx * 100)}%"></i></span>${x.s}</div>`).join('') + (r.place > 5 ? `<div class="me2"><em>${r.place}</em><span><i style="width:${Math.round(r.score / mx * 100)}%"></i></span>${r.score}</div>` : '') : '';
+  return `<div class="hero hm${siteBg('hero') ? ' ph' : ''}" ${siteBg('hero')}><div class="hl"><span class="eb"><i></i>${e.cohort ? esc(e.cohort) : 'Онлайн-обучение'}</span><h1>Salom${fn ? ', <em>' + esc(fn) + '</em>' : ''}</h1><p>Онлайн-часть перед очным обучением. Пройдите уроки по порядку, после каждого есть тест.</p><div class="hrow">${nextAct()}<button class="gh" onclick="go('lessons')">Все уроки</button></div></div>
+<div class="gl"><span class="gt">Следующий шаг</span><div class="gr"><div class="rg"><svg viewBox="0 0 36 36"><circle class="t" cx="18" cy="18" r="15.9" pathLength="100"/><circle class="f" cx="18" cy="18" r="15.9" pathLength="100" stroke-dasharray="${pct} 100"/></svg><b>${pct}%</b></div><div><div class="nm">${cur ? esc(cur.title) : 'Все уроки пройдены'}</div><div class="sm2">${cur ? (isFinal(cur) ? 'Итоговый тест' : 'Урок ' + (ci + 1) + ' из ' + bs.length) : 'Ожидайте приглашения'}</div></div></div><div class="gf"><span>Баллы<b>${p.got} / ${p.max}</b></span><span>Осталось дней<b>${left}</b></span></div></div></div>
+<div class="sh"><h2>Ваш маршрут</h2><a href="#" onclick="go('lessons');return false">Все уроки</a></div><div class="rt"><i style="width:${bs.length ? Math.max(3, Math.round(done / bs.length * 100)) : 3}%"></i></div><div class="steps">${bs.map(step).join('')}</div>
+<div class="sh"><h2>Прогресс</h2><a href="#" onclick="go('progress');return false">Подробнее</a></div><div class="bento"><div class="bx b1"><span class="k">Баллы</span><span class="big2">${p.got}<small> / ${p.max}</small></span><div class="bar"><i style="width:${pct}%"></i></div><span class="sub">Нужно набрать: ${p.need} · осталось: ${Math.max(0, p.need - p.got)}</span></div>
+<div class="bx b2"><span class="k">Место в потоке</span><span class="big2">${r ? r.place : '—'}<small>${r ? ' из ' + r.n : ''}</small></span><div class="lb">${lb}</div></div>
+<div class="bx b3"><span class="k">Тесты</span><span class="big2">${done}<small> из ${bs.length}</small></span><span class="sub">Сдано тестов. Срок доступа до ${dateRu(e.access_until)}</span></div></div>
+<div class="sh"><h2>Продукты TBC</h2></div><div class="plain">Отдел взыскания — это важное звено в финансовой системе компании. Его основная задача — взаимодействие с клиентами, имеющими просроченную задолженность, и поиск оптимальных решений для ее погашения</div><div class="g3">${PR.slice(0, 3).map(prc).join('')}</div>${note}`;
+};
 V.lessons = () => {
   const bs = S.st.blocks, q = S.q.toLowerCase(), i0 = bs.findIndex(b => b.status !== 'passed');
   const head = i0 < 0 ? 'Вы прошли все уроки!' : i0 === 0 ? 'Вас ждет первый урок!' : 'Вас ждет урок ' + (i0 + 1) + '!';
@@ -494,8 +529,13 @@ function aBlock() {
   const d = AD.course; if (!d) return ''; const b = d.blocks.find(x => x.id === S.p.bid); if (!b) return ''; const c = d.course, tab = S.p.tab || 'settings';
   return crumb(esc(c.title), `adGo('a_course',{id:${c.id},tab:'content'})`) + titleBar('Редактирование модуля', [['settings', 'Настройки'], ['questions', 'Вопросы теста']], tab, 'btab') + (tab === 'questions' ? bQuestions(b) : bSettings(b)) + footBar(`<button class="bgreen" onclick="blockSave(${b.id},1)">Сохранить</button><button class="bgreen sec" onclick="blockSave(${b.id},0)">Применить</button>`, `<button class="borange" onclick="adGo('a_course',{id:${c.id},tab:'content'})">Отменить</button><button class="bred" onclick="blockDel(${b.id})">Удалить</button>`);
 }
+const fh = (id, l, v, unit, hint, min) => `<div class="fg"><label class="f" for="${id}">${l}</label><div class="un"><input id="${id}" type="number" min="${min == null ? 0 : min}" value="${esc(v == null ? '' : v)}"><i>${unit}</i></div><p class="h2">${hint}</p></div>`;
+function bkSum() { const g = i => $('#' + i) ? $('#' + i).value : ''; const t = +g('bk_m') || 0, el = $('#bk_sum'); if (el) el.textContent = 'Итог: модуль откроется на ' + (g('bk_d') || 0) + '-й день. Тест из ' + (g('bk_q') || 0) + ' вопр., проходной балл ' + (g('bk_p') || 0) + '%, попыток: ' + (g('bk_a') || 0) + ', ' + (t > 0 ? 'время ' + t + ' мин.' : 'время не ограничено') + (chk('bk_f') ? '. Этот модуль — итоговый тест курса.' : '.'); }
 function bSettings(b) {
-  return `<div class="form">${fld('bk_t', 'Название модуля <span class="req">*</span>', b.title)}<label class="f">Обложка модуля</label>${imgBox('bk_c', b.cover)}<div class="grid2">${fld('bk_d', 'День открытия (с начала курса)', b.day, 'number')}${fld('bk_q', 'Вопросов в тесте', b.questions_count, 'number')}${fld('bk_p', 'Проходной результат, %', b.pass_percent, 'number')}${fld('bk_a', 'Число попыток', b.max_attempts, 'number')}${fld('bk_m', 'Время теста, минут (0 — без ограничения)', b.time_limit_min, 'number')}</div><label class="opt"><input id="bk_f" type="checkbox" ${b.label === 'final' ? 'checked' : ''}><span>Итоговый тест (последний модуль курса)</span></label><div class="err" id="pe"></div></div>`;
+  setTimeout(bkSum, 0);
+  return `<div class="form" oninput="bkSum()" onchange="bkSum()"><fieldset class="fs"><legend>Основное</legend>${fld('bk_t', 'Название модуля <span class="req">*</span>', b.title)}<label class="f">Обложка модуля</label>${imgBox('bk_c', b.cover)}<p class="h2">Рекомендуемый размер 1280×480 пикселей. Обложку можно выбрать из медиатеки.</p><div style="max-width:340px;margin-top:20px">${fh('bk_d', 'Открывается на дне курса', b.day, 'день', 'Кандидат увидит модуль, когда с начала его курса пройдёт это число дней.')}</div></fieldset>
+<fieldset class="fs"><legend>Тест после модуля</legend><div class="grid2">${fh('bk_q', 'Вопросов в тесте', b.questions_count, 'шт.', 'Вопросы выбираются случайно из банка модуля.', 1)}${fh('bk_p', 'Проходной результат', b.pass_percent, '%', 'Нужно набрать не меньше, чтобы открыть следующий модуль.', 1)}${fh('bk_a', 'Число попыток', b.max_attempts, 'раз', 'Сколько раз кандидат может пройти тест.', 1)}${fh('bk_m', 'Время на тест', b.time_limit_min, 'минут', '0 — без ограничения по времени.')}</div>
+<label class="swrow" for="bk_f"><input id="bk_f" type="checkbox" class="sw" ${b.label === 'final' ? 'checked' : ''}><span><b>Итоговый тест курса</b><span class="h2">Включите для последнего модуля. Тест откроется после всех уроков и всех модулей.</span></span></label><div class="note2" id="bk_sum"></div></fieldset><div class="err" id="pe"></div></div>`;
 }
 function bQuestions(b) {
   return `<div class="form wide"><div class="acts"><button class="bgreen" onclick="qForm(0,${b.id})">Добавить вопрос</button><button class="sec" onclick="qImport(${b.id})">Импорт текстом</button></div><div style="margin-top:14px">${b.questions.map((q, k) => `<div class="mrow" style="align-items:flex-start"><span class="badge t">${k + 1}</span><div style="flex:1"><a class="tt" href="#" onclick="qForm(${q.id},${b.id});return false"><b>${esc(q.text)}</b></a> ${q.type === 'multi' ? '<span class="badge m">несколько ответов</span>' : ''}${q.options.map(o => `<div class="${o.correct ? '' : 'mu'}">${o.correct ? '✓ ' : '· '}${esc(o.text)}</div>`).join('')}</div><span class="acts"><button class="ic" title="Изменить" onclick="qForm(${q.id},${b.id})">✎</button><button class="ic red" title="Удалить" onclick="qDel(${q.id})">🗑</button></span></div>`).join('') || '<p class="mu">Вопросов пока нет</p>'}</div></div>`;
