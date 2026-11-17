@@ -103,7 +103,6 @@ async function api(p, o = {}) {
   const h = { 'Content-Type': 'application/json' };
   if (C.useKey && C.key) { h.apikey = C.key; h.Authorization = 'Bearer ' + C.key; }
   if (S.tok) h['X-Token'] = S.tok;
-  h['x-region'] = C.region || 'eu-central-1';
   let r;
   try { r = await fetch((C.api || '/api') + p, { method: o.method || 'GET', headers: h, body: o.body ? JSON.stringify(o.body) : undefined }); }
   catch (e) { throw Object.assign(new Error('Нет связи с сервером. Проверьте интернет и повторите.'), { status: 0 }); }
